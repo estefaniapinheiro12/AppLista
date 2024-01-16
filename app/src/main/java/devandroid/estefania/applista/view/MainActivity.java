@@ -1,8 +1,10 @@
-package devandroid.estefania.applista;
+package devandroid.estefania.applista.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import devandroid.estefania.applista.R;
 
 public class MainActivity extends AppCompatActivity {
 
