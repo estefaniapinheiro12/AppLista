@@ -2,6 +2,7 @@ package devandroid.estefania.applista.view;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -12,6 +13,9 @@ import devandroid.estefania.applista.R;
 import devandroid.estefania.applista.model.Pessoa;
 
 public class MainActivity extends AppCompatActivity {
+
+    SharedPreferences preferences;
+    public static final String NOME_PREFERENCES = "pref listavip";
 
     Pessoa pessoa;
     Pessoa outrapessoa;
@@ -31,6 +35,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        preferences = getSharedPreferences(NOME_PREFERENCES,0);
+        SharedPreferences.Editor listaVip = preferences.edit();
 
         pessoa = new Pessoa();
 
@@ -82,6 +89,11 @@ public class MainActivity extends AppCompatActivity {
 
                 Toast.makeText(MainActivity.this, "Salvo" + pessoa.toString(), Toast.LENGTH_LONG).show();
 
+                listaVip.putString("Primeiro nome", pessoa.getPrimeiroNome());
+                listaVip.putString("Sobrenome", pessoa.getSobreNome());
+                listaVip.putString("Curso Desejado", pessoa.getCursoDesejado());
+                listaVip.putString("Telefone", pessoa.getTelefoneContato());
+                listaVip.apply();
             }
         });
 
